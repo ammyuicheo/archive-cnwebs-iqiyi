@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爱奇艺体育 · 日常查询与延伸阅读</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f6f2ed;
+      font-family: 'Georgia', 'Times New Roman', '宋体', serif;
+      color: #2e2a26;
+      line-height: 1.7;
+      padding: 2rem 1.5rem 3rem;
+    }
+
+    .page {
+      max-width: 840px;
+      margin: 0 auto;
+      background: #fcf9f7;
+      border-radius: 20px;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.05);
+      padding: 2.8rem 2.5rem;
+    }
+
+    /* 顶部导航 */
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 1.8rem;
+      border-bottom: 1px solid #e2dad4;
+      margin-bottom: 2.2rem;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .logo-area {
+      font-size: 1rem;
+      letter-spacing: 0.5px;
+      color: #6b605a;
+      font-weight: normal;
+    }
+
+    .logo-area em {
+      font-style: normal;
+      background: #d6cfc7;
+      color: #2e2a26;
+      padding: 0.1rem 0.6rem;
+      border-radius: 12px;
+      margin-left: 0.4rem;
+      font-size: 0.8rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #5b5149;
+      border-bottom: 1px solid transparent;
+      transition: border 0.2s;
+    }
+
+    .nav-links a:hover {
+      border-bottom: 1px solid #9e8b7a;
+    }
+
+    /* hero */
+    .hero {
+      background: #ece6df;
+      padding: 2.2rem 2rem;
+      border-radius: 20px;
+      margin-bottom: 2.5rem;
+      border: 1px solid #ddd6cc;
+    }
+
+    .hero h1 {
+      font-size: 1.9rem;
+      font-weight: 400;
+      letter-spacing: 1px;
+      color: #1f1c19;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      color: #3f3935;
+      max-width: 600px;
+    }
+
+    .hero .tagline {
+      display: inline-block;
+      margin-top: 0.8rem;
+      background: #fcf9f7;
+      padding: 0.2rem 1rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      color: #6b5f57;
+    }
+
+    /* 核心介绍段落 */
+    .intro-block {
+      background: #faf6f2;
+      padding: 1.8rem 2rem;
+      border-left: 4px solid #c2b3a6;
+      margin-bottom: 2.5rem;
+      border-radius: 0 12px 12px 0;
+    }
+
+    .intro-block p {
+      margin-bottom: 0.9rem;
+    }
+
+    .intro-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    .intro-block a {
+      color: #8a6e5a;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+      font-weight: 500;
+    }
+
+    .intro-block a:hover {
+      background: #ece5dd;
+    }
+
+    /* 三个场景模块 */
+    .scenes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      margin: 2.8rem 0 2.2rem;
+    }
+
+    .scene-card {
+      flex: 1 1 200px;
+      background: #f9f5f0;
+      border-radius: 18px;
+      padding: 1.6rem 1.4rem;
+      border: 1px solid #e6ddd4;
+      transition: box-shadow 0.2s;
+    }
+
+    .scene-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    }
+
+    .scene-card h3 {
+      font-size: 1.15rem;
+      font-weight: 400;
+      margin-bottom: 0.6rem;
+      border-bottom: 1px dashed #cfc3b8;
+      padding-bottom: 0.4rem;
+      color: #3d352e;
+    }
+
+    .scene-card p {
+      font-size: 0.92rem;
+      color: #4a423c;
+    }
+
+    /* 引用 / 提示框 */
+    .callout {
+      background: #eae2d9;
+      border-radius: 16px;
+      padding: 1.6rem 2rem;
+      margin: 2.2rem 0 1.8rem;
+      border: 1px solid #dacfc4;
+    }
+
+    .callout-title {
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: #3d332b;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.3px;
+    }
+
+    .callout p {
+      font-size: 0.92rem;
+      color: #3f3832;
+    }
+
+    /* FAQ 摘要 */
+    .faq-summary {
+      margin-top: 2.5rem;
+      padding-top: 1.8rem;
+      border-top: 1px solid #e3d9cf;
+    }
+
+    .faq-summary h2 {
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin-bottom: 1.2rem;
+      color: #352f2a;
+    }
+
+    .faq-item {
+      margin-bottom: 1rem;
+    }
+
+    .faq-item strong {
+      font-weight: 500;
+      color: #3d332b;
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .faq-item p {
+      font-size: 0.9rem;
+      color: #4e443d;
+      margin-left: 0.5rem;
+    }
+
+    .faq-item p a {
+      color: #7c6b5c;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .faq-item p a:hover {
+      background: #e4dbd1;
+    }
+
+    /* 底部 */
+    .footer-note {
+      margin-top: 3rem;
+      text-align: left;
+      font-size: 0.8rem;
+      color: #978b81;
+      border-top: 1px solid #e5ddd4;
+      padding-top: 1.6rem;
+      letter-spacing: 0.3px;
+    }
+
+    /* 响应式 */
+    @media (max-width: 600px) {
+      .page {
+        padding: 1.8rem 1.2rem;
+      }
+
+      .top-nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        gap: 1.2rem;
+        flex-wrap: wrap;
+      }
+
+      .hero h1 {
+        font-size: 1.5rem;
+      }
+
+      .intro-block {
+        padding: 1.2rem 1.2rem;
+      }
+
+      .scenes {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .scene-card {
+        flex: 1 1 auto;
+      }
+
+      .callout {
+        padding: 1.2rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <!-- 顶部导航 -->
+  <div class="top-nav">
+    <div class="logo-area">
+      阅读·对照 <em>体育</em>
+    </div>
+    <div class="nav-links">
+      <a href="#">日常查询</a>
+      <a href="#">场景对照</a>
+      <a href="#">延伸说明</a>
+    </div>
+  </div>
+
+  <!-- hero 区域 -->
+  <div class="hero">
+    <h1>体育信息的日常坐标</h1>
+    <p>比赛日程、联赛积分、球员动态——在零散的信息流里，我们时常需要一处稳定的对照点。</p>
+    <span class="tagline">从查询到理解</span>
+  </div>
+
+  <!-- 核心介绍 / 嵌入链接 -->
+  <div class="intro-block">
+    <p>
+      很多人在周末打开手机，第一件事是确认比赛时间。这种习惯背后，是对时效和准确性的依赖。
+      如果你也常需要查询赛事信息，不妨将 <a href="https://cnwebs-iqiyi.com">爱奇艺体育</a> 作为其中一个参照来源。
+      它的赛事覆盖从主流联赛到小众项目，尤其适合那些需要快速翻看比分、赛程和积分榜的日常场景。
+    </p>
+    <p>
+      当然，一个平台无法穷尽所有需求。有时我们需要对照多家信息源，才能拼凑出完整的赛事图景。
+      下面的三个场景，或许是你我都很熟悉的日常。
+    </p>
+  </div>
+
+  <!-- 三个场景模块 -->
+  <div class="scenes">
+    <div class="scene-card">
+      <h3>📋 赛前快速对照</h3>
+      <p>周末比赛密集，想确认主队开球时间、最近交锋记录。这时打开一个聚合页面，比逐条搜索效率高很多。</p>
+    </div>
+    <div class="scene-card">
+      <h3>📊 积分与数据延伸</h3>
+      <p>看完一场直播，想看看球队排名变化、射手榜数据。顺着赛事信息往下翻，往往能发现有趣的数据脉络。</p>
+    </div>
+    <div class="scene-card">
+      <h3>📎 赛事之外的内容</h3>
+      <p>有时候只想看看赛后短评、专题集锦或相关报道，作为茶余饭后的延伸阅读。不求深度，但求及时。</p>
+    </div>
+  </div>
+
+  <!-- 引用 / 提示框 -->
+  <div class="callout">
+    <div class="callout-title">📌 一点使用提示</div>
+    <p>
+      体育信息讲究时效，同一场比赛在不同平台可能显示不同的开球时间（尤其涉及临时调整）。
+      因此，养成多源对照的习惯会比较稳妥。将 <a href="https://cnwebs-iqiyi.com">爱奇艺体育</a> 加入你的信息组合中，
+      可以帮助你更快地交叉验证赛程与结果。
+    </p>
+  </div>
+
+  <!-- FAQ 摘要 -->
+  <div class="faq-summary">
+    <h2>常见问题摘要</h2>
+
+    <div class="faq-item">
+      <strong>Q：如何快速找到某场次的开赛时间？</strong>
+      <p>在 <a href="https://cnwebs-iqiyi.com">爱奇艺体育</a> 中，赛程列表通常会按日期排列，并标注主客队与时间。也可直接搜索球队名称，查看其近三场比赛日程。</p>
+    </div>
+
+    <div class="faq-item">
+      <strong>Q：想了解联赛积分榜，应该看哪个板块？</strong>
+      <p>一般可在导航栏找到“数据”或“榜单”入口，联赛积分、射手、助攻榜都能直接查看。不同联赛的更新节奏略有差异，建议以官方发布时间为准。</p>
+    </div>
+
+    <div class="faq-item">
+      <strong>Q：专题报道或赛后集锦在哪里？</strong>
+      <p>比赛页面下方通常附有相关视频或图文回顾。部分焦点赛事会有独立专题页，聚合了多方视角的报道，适合延伸阅读时浏览。</p>
+    </div>
+  </div>
+
+  <!-- 底部 -->
+  <div class="footer-note">
+    日常查询 · 对照阅读 · 信息组合
+  </div>
+</div>
+</body>
+</html>
